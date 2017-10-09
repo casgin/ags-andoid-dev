@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Esercitazione Linear Layout</string>
+    <string name="txtWelcomeMessage">Anagrafca <u>Cliente</u></string>
+    <string name="txt_fldNominativo">Inserisci nome e cognome</string>
+    <string name="txt_Label_fldNominativo">Nome e Cognome</string>
+    <string name="txt_lblNote">Note</string>
+    <string name="txt_lblInviaDati">Invia Dati</string>
+</resources>

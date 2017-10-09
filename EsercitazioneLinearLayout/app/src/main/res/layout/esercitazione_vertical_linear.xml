@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lblWelcomeMessage"
+        style="@style/Titolone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtWelcomeMessage" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/labelCampo"
+        android:text="@string/txt_Label_fldNominativo" />
+
+    <EditText
+        android:id="@+id/fldNominativo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/txt_fldNominativo"
+        style="@style/labelCampo"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/labelCampo"
+        android:text="@string/txt_lblNote" />
+
+    <EditText
+        android:id="@+id/fldNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        style="@style/labelCampo"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/labelCampo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:onClick="recuperaValori"
+        android:text="@string/txt_lblInviaDati" />
+
+</LinearLayout>
