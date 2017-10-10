@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">EsempioLogin</string>
+    <string name="app_name">Esempio Login</string>
+
+    <!-- -->
+    <string name="hint_fldUsername">Inserisci email o userId</string>
+    <string name="lbl_btnLogin">Login</string>
+    <string name="logo_ags">Logo AGS</string>
+    <string name="lbl_fldPassword">Password</string>
+    <string name="lbl_fldUsername">Username</string>
+
+
+    <!-- -->
 </resources>
