@@ -59,10 +59,5 @@ public class MainActivity extends AppCompatActivity {
 
         // --- Visualizzo il Toast
         customToast.show();
-
-
-
-
-
     }
 }
