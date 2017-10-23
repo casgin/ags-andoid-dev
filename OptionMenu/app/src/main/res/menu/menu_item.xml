@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Definisco le voci di menu -->
+    <item android:id="@+id/item1" android:title="Comando 1"></item>
+    <item android:id="@+id/item2" android:title="Comando 2"></item>
+    <item android:id="@+id/item3" android:title="Comando 3"></item>
+    <item android:id="@+id/item4" android:title="Comando 4"></item>
+
+</menu>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gcastro.newstelecomando.MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scegli un comando"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSegno1"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/acquario"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/lblSegnoCancro"
+        app:layout_constraintRight_toRightOf="@+id/btnSegno2"
+        android:layout_marginTop="33dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="34dp"
+        app:layout_constraintLeft_toLeftOf="@+id/btnSegno2"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/btnSegno2"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/cancro"
+        app:layout_constraintRight_toLeftOf="@+id/lblSegnoCancro"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/btnSegno3"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="14dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSegno3"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/gemelli"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/btnSegno4"
+        app:layout_constraintRight_toRightOf="@+id/btnSegno2"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintLeft_toLeftOf="@+id/btnSegno2" />
+
+    <ImageButton
+        android:id="@+id/btnSegno4"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/leone"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/btnSegno3"
+        android:layout_marginTop="122dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblSegnoCancro"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintLeft_toLeftOf="@+id/btnSegno3" />
+
+    <TextView
+        android:id="@+id/lblSegnoLeone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leone"
+        style="@style/nomeSegno"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="27dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/btnSegno4"
+        app:layout_constraintLeft_toRightOf="@+id/btnSegno4" />
+
+    <TextView
+        android:id="@+id/lblSegnoGemelli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gemelli"
+        style="@style/nomeSegno"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="17dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/btnSegno3"
+        app:layout_constraintLeft_toRightOf="@+id/btnSegno3" />
+
+    <TextView
+        android:id="@+id/lblSegnoCancro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancro"
+        style="@style/nomeSegno"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="163dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblSegnoAcquario"
+        style="@style/nomeSegno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acquario"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSegno1"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/btnSegno1" />
+
+</android.support.constraint.ConstraintLayout>
