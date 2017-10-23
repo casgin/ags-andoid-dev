@@ -1,8 +1,13 @@
 package com.gcastro.oroscopiscarsi;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -20,10 +25,58 @@ public class DettaglioOrsocopoActivity extends AppCompatActivity {
 
     final String endPoint = "http://www.oroscopi.com/ws/getoroscopo.php";
 
+    private String tipologia;
+    private String segno;
+    private Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dettaglio_orsocopo);
+
+        OroscopoManager objOroscopo = new OroscopoManager();
+        objOroscopo.interrogaWS();
+
+        objOroscopo.getSegno();
+        objOroscopo.getTipologia();
+
+
+        // === Recupero gli extras dalla Activity chiamante
+        this.bundle = getIntent().getExtras();
+        this.segno = bundle.getString("sign");
+        this.tipologia = bundle.getString("type");
+
+        // === In base alla tipologia dell'oroscopo,
+        // === scelgo il layout adeguato
+        if(this.tipologia.equals("Settimana"))
+        {
+            setContentView(R.layout.oroscopo_settimana);
+        } else {
+            setContentView(R.layout.activity_dettaglio_orsocopo);
+        }
+
+
+        // ------------------------------------------------
+        // -- Recupero Drawable Dinamico
+        // ------------------------------------------------
+        ImageView imgSegno = (ImageView)findViewById(R.id.imgSegno);
+
+        int imageId = getResources()
+                        .getIdentifier(
+                                this.segno,
+                                "drawable",
+                                getPackageName());
+
+        Log.d("DettaglioOroscopo", "Id risorsa immagine:" +imageId);
+
+
+
+        // --- Imposto idRisorsa nella ImageView
+        imgSegno.setImageResource(imageId);
+        imgSegno.setBackgroundColor(Color.TRANSPARENT);
+        imgSegno.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+
+
 
         // ------------------------------------------------
         // -- Gestione delle chiamate HTTP
@@ -98,6 +151,13 @@ public class DettaglioOrsocopoActivity extends AppCompatActivity {
                     Log.d("MainActivity", "Data:" + dataOroscopo);
                     Log.d("MainActivity", "Testo:" + testoOroscopo);
 
+                    // --- Inserisco le informazioni sul layout
+                    TextView txtTitolo = (TextView)findViewById(R.id.txtTitolo);
+                    txtTitolo.setText("Oroscopo del giorno per " + segnoOroscopo.toUpperCase());
+
+                    TextView txtTestoOroscopo = (TextView)findViewById(R.id.txtTestoOroscopo);
+                    txtTestoOroscopo.setText(testoOroscopo);
+
 
                 }
 
@@ -116,6 +176,12 @@ public class DettaglioOrsocopoActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    public void tornaIndietro(View view) {
+        Intent tornaIndietro = new Intent(DettaglioOrsocopoActivity.this, MainActivity.class);
+        startActivity(tornaIndietro);
 
     }
 }

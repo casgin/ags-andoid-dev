@@ -9,10 +9,133 @@
     tools:layout_editor_absoluteX="0dp">
 
     <TextView
+        android:id="@+id/lblTitolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp" />
+        android:text="CN Oroscopi Lite"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/textView2"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textView2" />
+
+    <GridLayout
+        android:id="@+id/gridElencoSegni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginStart="27dp"
+        android:columnCount="3"
+        android:rowCount="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <ImageButton
+            android:id="@+id/btnAriete"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ariete" />
+
+        <ImageButton
+            android:id="@+id/btnToro"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/toro" />
+
+        <ImageButton
+            android:id="@+id/btnGemelli"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/gemelli" />
+
+        <ImageButton
+            android:id="@+id/btnCancro"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/cancro" />
+
+        <ImageButton
+            android:id="@+id/btnLeone"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/leone" />
+
+        <ImageButton
+            android:id="@+id/btnVergine"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/vergine" />
+
+        <ImageButton
+            android:id="@+id/btnBilancia"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/bilancia" />
+
+        <ImageButton
+            android:id="@+id/btnScorpione"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/scorpione" />
+
+        <ImageButton
+            android:id="@+id/btnSagittario"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/sagittario" />
+
+        <ImageButton
+            android:id="@+id/btnCapricorno"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/capricorno" />
+
+        <ImageButton
+            android:id="@+id/btnAcquario"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/acquario" />
+
+        <ImageButton
+            android:id="@+id/btnPesci"
+            style="@style/pulsanteSegno"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/pesci" />
+
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo Oroscopo:"
+        android:layout_marginStart="27dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblTipoOroscopo"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/lblTipoOroscopo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giorno"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblTitolo"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toRightOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>
