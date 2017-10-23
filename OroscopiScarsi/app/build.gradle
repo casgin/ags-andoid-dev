@@ -26,10 +26,13 @@ dependencies {
     })
 
     // === Includo le librerie di 3rd Part
-    compile 'com.github.d-max:spots-dialog:0.7@aar'         // --- Helper per i Dialog
-    compile 'com.loopj.android:android-async-http:1.4.9'    // --- Async HTTP Client
-    compile 'com.google.code.gson:gson:2.8.2'               // --- JSON Parsing
+    // --- Helper per i Dialog
+    // --- Async HTTP Client
+    // --- JSON Parsing
 
+    compile 'com.github.d-max:spots-dialog:0.7@aar'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
