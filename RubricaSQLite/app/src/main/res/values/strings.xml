@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RubricaSQLite</string>
+    <string name="inserisci_nuovo_contatto">Inserisci Nuovo Contatto</string>
+    <string name="inserisci">Inserisci</string>
+    <string name="inserisci_il_numero_di_telefono">Inserisci il numero di Telefono</string>
+    <string name="inserisci_il_nome">Inserisci il nome</string>
+</resources>
