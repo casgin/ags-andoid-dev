@@ -16,6 +16,11 @@ public class Contatto {
 
     }
 
+    /**
+     *
+     * @param fldNome
+     * @param fldTelefono
+     */
     public Contatto(String fldNome, String fldTelefono)
     {
         this.nome = fldNome;

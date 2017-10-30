@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+                            implements ListView.OnItemClickListener {
+
+    private List listaContatti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // === @todo: Richiamare Custom Adapter
         // === (vedi DatabaseHandler.getAllAnagrafica())
@@ -32,7 +39,21 @@ public class MainActivity extends AppCompatActivity {
             Log.d("MainActivity", output);
         }
 
-        // === @todo: Popolare la ListView
+        // --- Custom Adapter
+        CustomAdapter adapter = new CustomAdapter(
+                this,
+                R.layout.row_contatti,
+                listaContatti
+        );
+
+        // --- Passare il Custon Adapter alla ListView
+        ListView lstContatti = (ListView)findViewById(R.id.lstContatti);
+
+        // --- Inserisco il custom adapter alla ListView
+        lstContatti.setAdapter(adapter);
+
+        // --- Associo EventListener
+        lstContatti.setOnItemClickListener(this);
 
     }
 
@@ -43,6 +64,29 @@ public class MainActivity extends AppCompatActivity {
         );
 
         startActivity(frmInserisciNuovo);
+
+    }
+
+
+    /**
+     * Metodo delegato alla gestione del click sulla row della listView
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        // === Mostro la posizione dell'elemento selezionato
+        Log.d("MainActivity", Integer.toString(position));
+
+        // --- Recupero oggetto Contatto selezionato
+        Contatto contattoSelezionato = (Contatto)parent.getItemAtPosition(position);
+        Log.d("MainActivity", contattoSelezionato.getNome());
+
+
 
     }
 }

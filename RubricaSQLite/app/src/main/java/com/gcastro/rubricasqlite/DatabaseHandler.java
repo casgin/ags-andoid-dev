@@ -68,14 +68,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // --- 1: Recuperare istanza del DB
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // --- Mapping dei campi e rispettivi valori da inserire
+        // --- 2: Mapping dei campi e rispettivi valori da inserire
         ContentValues campi = new ContentValues();
 
         // --- Posso filtrare/elaborare il dato prima si associarlo
         campi.put(KEY_NOME, rowContatto.getNome().toUpperCase());
         campi.put(KEY_TELEFONO, rowContatto.getTelefono());
 
-        // --- Inseriso i campi nella tabella
+        // --- 3: Inseriso i campi nella tabella
         db.insert(TABLE, null, campi);
         db.close();
     };
@@ -150,6 +150,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 row.setNome(cursor.getString(1));
                 row.setTelefono(cursor.getString(2));
 
+                // --- lo aggiungo alla lista "listaContatti"
                 listaContatti.add(row);
 
             } while(cursor.moveToNext());

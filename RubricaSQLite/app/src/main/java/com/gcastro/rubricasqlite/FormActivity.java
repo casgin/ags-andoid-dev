@@ -16,7 +16,7 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void makeInsersci(View view) {
-        // --- istanziare DatabaseHelper
+        // --- istanziare DatabaseHandler
         DatabaseHandler dbh = new DatabaseHandler(this);
 
         // --- Recuperare i valori della maschera
