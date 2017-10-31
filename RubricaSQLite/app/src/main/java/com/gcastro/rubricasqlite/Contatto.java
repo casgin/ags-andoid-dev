@@ -38,7 +38,7 @@ public class Contatto {
 
     // === Getters and Setters
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -46,7 +46,7 @@ public class Contatto {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {

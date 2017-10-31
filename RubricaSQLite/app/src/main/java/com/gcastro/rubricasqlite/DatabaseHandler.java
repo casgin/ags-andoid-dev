@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,19 +105,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor!=null)
         {
             cursor.moveToFirst();
+
+            // --- Vado a popolare la classe entity resContatto
+            Contatto resContatto = new Contatto(
+                    Integer.parseInt(cursor.getString(0)),      // campo id
+                    cursor.getString(1),                        // campo nome
+                    cursor.getString(2)                         // campo telefono
+            );
+
+            Log.d("getAnagrafica_by_Id", cursor.getString(0));
+            Log.d("getAnagrafica_by_Id", cursor.getString(1));
+
             db.close();
-            return null;
+
+            return resContatto;
+
         }
 
-        Contatto resContatto = new Contatto(
-                Integer.parseInt(cursor.getString(0)),      // campo id
-                cursor.getString(1),                        // campo nome
-                cursor.getString(2)                         // campo telefono
-        );
+        return null;
 
-        db.close();
-
-        return resContatto;
     }
 
 
