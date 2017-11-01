@@ -1,7 +1,11 @@
 package com.gcastro.rubricasqlite;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -12,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.List;
+
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void drawListaContatti_removeItem(int Id)
+    private void drawListaContatti_removeItem(int Id, int itemId)
     {
         Id = Id-1;
 
@@ -171,21 +176,62 @@ public class MainActivity extends AppCompatActivity
         Log.d("onContextItemSelected", item.getTitle().toString());
         Log.d("onContextItemSelected", item.getMenuInfo().toString());
 
-
-        // Contatto c = this.dbh.getAnagrafica_by_Id(item.getGroupId());
-        // Contatto c = this.dbh.getAnagrafica_by_Id(3);
         this.contattoPassed = this.dbh.getAnagrafica_by_Id(item.getGroupId());
 
 
         switch (item.getTitle().toString())
         {
             case "Chiama":
+                // === Imposto i parametri per definire la Intent
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:"+this.contattoPassed.getTelefono()));
+
+
+                // --- Chiedo esplicitamente autorizzazione all'esecuzione della intent
+                if(
+                        ActivityCompat.checkSelfPermission(
+                            MainActivity.this,
+                                Manifest.permission.CALL_PHONE
+                        )
+                        !=
+                        PackageManager.PERMISSION_GRANTED
+                ) {
+                    // === Quindi rifiuto la permission
+                    Toast.makeText(
+                            this,
+                            "Dare il permesso di effettuare chiamate",
+                            Toast.LENGTH_LONG)
+                        .show();
+
+                    ActivityCompat.requestPermissions(
+                            this,
+                            new String[]{Manifest.permission.CALL_PHONE},
+                            1
+                    );
+
+                } else {
+                    // fai partire la intent
+                    startActivity(i);
+
+                }
+
                 Toast.makeText(this,
                         "Hai selezionato Chiama per "+this.contattoPassed.getNome(),
                         Toast.LENGTH_LONG).show();
                 break;
 
             case "Modifica":
+                Intent frmInserisciNuovo = new Intent(
+                        MainActivity.this,
+                        FormActivity.class
+                );
+
+                frmInserisciNuovo.putExtra("idRecord", this.contattoPassed.getId());
+                frmInserisciNuovo.putExtra("formType", "Modifica");
+
+                startActivity(frmInserisciNuovo);
+
+
                 Toast.makeText(this,
                         "Hai selezionato Modifica per "+this.contattoPassed.getId(),
                         Toast.LENGTH_LONG).show();
@@ -221,9 +267,6 @@ public class MainActivity extends AppCompatActivity
                             // --- Intendiamo cancellare il record
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
-
-
-
                                 // === Qui devo effettivamente cancellare il record
                                 // MainActivity.dbh.cancellaAnagrafica_by_Id(MainActivity.contattoPassed.getId());
 
@@ -237,22 +280,18 @@ public class MainActivity extends AppCompatActivity
                                         .setConfirmClickListener(null)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
 
-                                drawListaContatti_removeItem(MainActivity.contattoPassed.getId());
+                                drawListaContatti_removeItem(MainActivity.contattoPassed.getId(),item.getItemId());
                             }
 
-
-
-
                         })
-
                         .show()
                         ;
 
-
-
+                /*
                 Toast.makeText(this,
                         "Hai selezionato Cancella per "+this.contattoPassed.getNome(),
                         Toast.LENGTH_LONG).show();
+                */
                 break;
         }
 

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gcastro.rubricasqlite">
 
+    <!-- Aggiungo la permission per effettuare chiamate -->
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+
+
     <application
         android:allowBackup="true"
 

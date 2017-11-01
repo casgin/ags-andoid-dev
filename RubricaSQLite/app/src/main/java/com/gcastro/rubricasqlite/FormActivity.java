@@ -1,18 +1,56 @@
 package com.gcastro.rubricasqlite;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class FormActivity extends AppCompatActivity {
+
+    private String formType;
+    static private DatabaseHandler dbh;
+    static public Contatto contattoPassed;
+
+    TextView fldNome, fldTelefono;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form);
+
+        // === Recupero il bundle
+        formType = getIntent().getExtras().getString("formType");
+
+
+        // === Verifico di che operazione si tratta
+        // if(formType.indexOf("Modifica") != -1)
+        if(formType.equals("Modifica"))
+        {
+            setContentView(R.layout.activity_form_modifica);
+
+            // --- Istanziare DBH
+            this.dbh = new DatabaseHandler(this);
+            int recordId =getIntent().getExtras().getInt("idRecord");
+
+            // --- Recuperare il record
+            this.contattoPassed = this.dbh.getAnagrafica_by_Id(recordId);
+
+            // --- Popolo la Maschera
+            fldNome = (TextView)findViewById(R.id.fldNome);
+            fldNome.setText(this.contattoPassed.getNome());
+
+            fldTelefono = (TextView)findViewById(R.id.fldTelefono);
+            fldTelefono.setText(this.contattoPassed.getTelefono());
+
+
+        } else {
+            setContentView(R.layout.activity_form);
+        }
+
     }
 
     public void makeInsersci(View view) {
@@ -41,6 +79,38 @@ public class FormActivity extends AppCompatActivity {
 
         // --- Inserisire il nuovo record
         dbh.aggiungiAnagrafica(new Contatto(_nome, _telefono));
+
+        // --- Tornare alla MainActivity
+        Intent back = new Intent(FormActivity.this, MainActivity.class);
+        startActivity(back);
+
+    }
+
+
+    public void makeModifica(View view)
+    {
+        Toast.makeText(this,"Eseguito", Toast.LENGTH_SHORT).show();
+
+        // --- Recuperare i dati dalla maschera
+        String fldNomeToUpdate = fldNome.getText().toString();
+        String fldTelefonoToUpdate = fldTelefono.getText().toString();
+
+        // --- Validare
+        if(fldNomeToUpdate.trim().isEmpty() || fldTelefonoToUpdate.trim().isEmpty())
+        {
+            new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Oops...")
+                    .setContentText("I campi devono essere popolati!")
+                    .show();
+            return;
+        }
+
+        // --- Modifico gli attributi della classe
+        this.contattoPassed.setNome(fldNomeToUpdate);
+        this.contattoPassed.setTelefono(fldTelefonoToUpdate);
+
+        // --- Richiamare il metodo public void aggiornaAnagrafica(Contatto rowToModify)
+        this.dbh.aggiornaAnagrafica(this.contattoPassed);
 
         // --- Tornare alla MainActivity
         Intent back = new Intent(FormActivity.this, MainActivity.class);
